@@ -1,4 +1,4 @@
-package com.bentest.spiders.text;
+package com.bentest.std.controller;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
