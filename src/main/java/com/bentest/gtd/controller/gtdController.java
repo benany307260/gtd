@@ -1,4 +1,4 @@
-package com.bentest.std.controller;
+package com.bentest.gtd.controller;
 
 import java.util.List;
 
