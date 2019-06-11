@@ -11,6 +11,7 @@ import com.bentest.gtd.entity.GtdSchedule;
 import com.bentest.gtd.result.Result;
 import com.bentest.gtd.service.IGtdService;
 import com.bentest.gtd.vo.GtdScheduleVo;
+import com.github.pagehelper.PageHelper;
 
 @RestController
 public class GtdController {
@@ -24,6 +25,11 @@ public class GtdController {
 		//DateFormatUtils.format(amzProxy.getExpireTime(), "yyyy-MM-dd HH:mm:ss");
 		//String currDateStr = DateFormatUtils.format(System.currentTimeMillis(), "yyyyMMdd");
 		//Integer currDate = Integer.valueOf(currDateStr);
+		
+		if(condition.getPageNum() != null && condition.getPageSize() != null) {
+			//使用分页插件
+			PageHelper.startPage(condition.getPageNum() , condition.getPageSize());
+		}
 		
 		List<GtdSchedule> itemList = gtdService.findItemList(condition);
 		return Result.success(itemList);

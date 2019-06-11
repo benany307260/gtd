@@ -7,4 +7,5 @@ import com.bentest.gtd.vo.GtdScheduleVo;
 
 public interface IGtdService {
 	public List<GtdSchedule> findItemList(GtdScheduleVo condition);
+	
 }

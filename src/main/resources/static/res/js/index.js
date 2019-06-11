@@ -6,7 +6,9 @@ function loadCurrHopeDoneList() {
 	var currDate = new Date().Format("yyyyMMdd");
 	
     var condition = {
-    		itemHopeDoneDate: currDate
+    		itemHopeDoneDate: currDate,
+    		//pageNum: 1,
+    		//pageSize: 20
 	};
     
     var conditionJson = JSON.stringify(condition);

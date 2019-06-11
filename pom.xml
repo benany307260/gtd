@@ -76,8 +76,13 @@
 		<!-- pageHelper -->
         <dependency>
             <groupId>com.github.pagehelper</groupId>
-            <artifactId>pagehelper</artifactId>
-             <version>4.1.4</version>
+            <artifactId>pagehelper-spring-boot-autoconfigure</artifactId>
+            <version>1.2.3</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.pagehelper</groupId>
+            <artifactId>pagehelper-spring-boot-starter</artifactId>
+            <version>1.2.3</version>
         </dependency>
 		
 		<!--开启 cache 缓存-->
@@ -103,6 +108,7 @@
 			<artifactId>commons-lang3</artifactId>
 			<!-- <version>3.6</version> -->
 		</dependency>
+		
 	
 	</dependencies>
 
