@@ -5,7 +5,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.bentest.gtd.dao.CmdMapper;
+import com.bentest.gtd.mapper.GtdMapper;
 import com.bentest.spiders.entity.AmzCmdtask;
 
 @Service
@@ -14,7 +14,7 @@ public class DealCmdTask {
 	private static Logger log = LoggerFactory.getLogger(DealCmdTask.class);
 	
 	@Autowired
-	private CmdMapper cmdMapper;
+	private GtdMapper cmdMapper;
 	
 	
 	private static Integer cmdTaskId = 0;

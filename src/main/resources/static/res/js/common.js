@@ -3,7 +3,7 @@
 
    /* 加载数据*/
 	loadData = function(path, isAsync, data, successFunc) {
-		var url =("./") + path; 
+		var url =("../") + path; 
 		$.ajax({
 			url: url,
 			type: 'POST',

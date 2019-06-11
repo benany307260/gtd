@@ -12,7 +12,7 @@ function loadCurrHopeDoneList() {
     var conditionJson = JSON.stringify(condition);
     
     var successFunc = function(data) {
-    	if(!data.meta.success)
+    	if(data.code != 0)
     	{
     		return;
     	}
@@ -28,7 +28,7 @@ function loadCurrHopeDoneList() {
             + '</a>'
             + '<h2>'
             + '<a class="layui-badge">动态</a>'
-            + '<a href="jie/detail.html">测试啦测试啦</a>'
+            + '<a href="jie/detail.html">'+dataList[i].itemContent+'</a>'
             + '</h2>'
             + '<div class="fly-list-info">'
             + '<a href="user/home.html" link>'
@@ -38,7 +38,7 @@ function loadCurrHopeDoneList() {
             + '</a>'
             + '<span>刚刚</span>'
             + '<span class="fly-list-kiss layui-hide-xs" title="悬赏飞吻"><i class="iconfont icon-kiss"></i> 60</span>'
-            + '<span class="layui-badge fly-badge-accept layui-hide-xs">已结</span>'
+            + '<span class="layui-badge fly-badge-accept layui-hide-xs">待完成</span>'
             + '<span class="fly-list-nums"> '
             + '<i class="iconfont icon-pinglun1" title="回答"></i> 66'
             + '</span>'
