@@ -52,7 +52,7 @@ function loadCurrHopeDoneList() {
 		
 	};
     
-	var path = "v1/getCurrHopeDone";
+	var path = "v1/findItemList";
     loadData(path, true, conditionJson, successFunc);
 };
 

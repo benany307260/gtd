@@ -18,7 +18,7 @@
 				successFunc(data);
 			},
 			error:function(data){
-				alert(data.responseJSON.meta.message);
+				alert("error");
 			},
 			beforeSend: function(){
 		      

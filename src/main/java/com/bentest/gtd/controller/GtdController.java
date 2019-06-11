@@ -3,6 +3,7 @@ package com.bentest.gtd.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -18,8 +19,8 @@ public class GtdController {
 	private IGtdService gtdService;
 	
 	
-	@RequestMapping(value = "/v1/getCurrHopeDone")
-	public Result<Object> getCurrHopeDone(GtdScheduleVo condition) {
+	@RequestMapping(value = "/v1/findItemList")
+	public Result<Object> findItemList(@RequestBody(required=false) GtdScheduleVo condition) {
 		//DateFormatUtils.format(amzProxy.getExpireTime(), "yyyy-MM-dd HH:mm:ss");
 		//String currDateStr = DateFormatUtils.format(System.currentTimeMillis(), "yyyyMMdd");
 		//Integer currDate = Integer.valueOf(currDateStr);
