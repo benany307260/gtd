@@ -2,6 +2,9 @@ package com.bentest.gtd.entity;
 
 import java.io.Serializable;
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.util.Date;
 
 
@@ -14,6 +17,7 @@ public class GtdSchedule implements Serializable {
 	@Id
 	private Integer id;
 
+	@JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name="CREATE_TIME")
 	private Date createTime;
@@ -45,6 +49,7 @@ public class GtdSchedule implements Serializable {
 	@Column(name="ITEM_TYPE")
 	private String itemType;
 
+	@JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name="UPDATE_TIME")
 	private Date updateTime;
@@ -53,7 +58,7 @@ public class GtdSchedule implements Serializable {
 	}
 
 	public Integer getId() {
-		return this.id;
+		return id;
 	}
 
 	public void setId(Integer id) {
@@ -61,7 +66,7 @@ public class GtdSchedule implements Serializable {
 	}
 
 	public Date getCreateTime() {
-		return this.createTime;
+		return createTime;
 	}
 
 	public void setCreateTime(Date createTime) {
@@ -69,7 +74,7 @@ public class GtdSchedule implements Serializable {
 	}
 
 	public String getItemContent() {
-		return this.itemContent;
+		return itemContent;
 	}
 
 	public void setItemContent(String itemContent) {
@@ -77,15 +82,15 @@ public class GtdSchedule implements Serializable {
 	}
 
 	public String getItemFontColor() {
-		return this.itemFontColor;
+		return itemFontColor;
 	}
 
 	public void setItemFontColor(String itemFontColor) {
 		this.itemFontColor = itemFontColor;
 	}
 
-	public int getItemHopeDoneDate() {
-		return this.itemHopeDoneDate;
+	public Integer getItemHopeDoneDate() {
+		return itemHopeDoneDate;
 	}
 
 	public void setItemHopeDoneDate(Integer itemHopeDoneDate) {
@@ -93,7 +98,7 @@ public class GtdSchedule implements Serializable {
 	}
 
 	public String getItemIcon() {
-		return this.itemIcon;
+		return itemIcon;
 	}
 
 	public void setItemIcon(String itemIcon) {
@@ -101,15 +106,15 @@ public class GtdSchedule implements Serializable {
 	}
 
 	public String getItemLink() {
-		return this.itemLink;
+		return itemLink;
 	}
 
 	public void setItemLink(String itemLink) {
 		this.itemLink = itemLink;
 	}
 
-	public int getItemRealDoneDate() {
-		return this.itemRealDoneDate;
+	public Integer getItemRealDoneDate() {
+		return itemRealDoneDate;
 	}
 
 	public void setItemRealDoneDate(Integer itemRealDoneDate) {
@@ -117,15 +122,15 @@ public class GtdSchedule implements Serializable {
 	}
 
 	public String getItemRemarks() {
-		return this.itemRemarks;
+		return itemRemarks;
 	}
 
 	public void setItemRemarks(String itemRemarks) {
 		this.itemRemarks = itemRemarks;
 	}
 
-	public int getItemStatus() {
-		return this.itemStatus;
+	public Integer getItemStatus() {
+		return itemStatus;
 	}
 
 	public void setItemStatus(Integer itemStatus) {
@@ -133,7 +138,7 @@ public class GtdSchedule implements Serializable {
 	}
 
 	public String getItemType() {
-		return this.itemType;
+		return itemType;
 	}
 
 	public void setItemType(String itemType) {
@@ -141,11 +146,12 @@ public class GtdSchedule implements Serializable {
 	}
 
 	public Date getUpdateTime() {
-		return this.updateTime;
+		return updateTime;
 	}
 
 	public void setUpdateTime(Date updateTime) {
 		this.updateTime = updateTime;
 	}
+
 
 }
