@@ -29,6 +29,9 @@ public class GtdScheduleVo implements Serializable {
 
 	private String itemRemarks;
 
+	/**
+	 * 任务状态。0-进行中；100-按时完成；200-过期未完成；300-过期已完成；400-草稿；
+	 */
 	private Integer itemStatus;
 
 	private String itemType;
