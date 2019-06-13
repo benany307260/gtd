@@ -9,6 +9,6 @@ import org.springframework.stereotype.Repository;
 
 import com.bentest.gtd.entity.GtdSchedule;
 @Repository
-public interface GtdScheduleRespository extends JpaRepository<GtdSchedule, Integer>, JpaSpecificationExecutor<GtdSchedule> {
+public interface GtdScheduleRespository extends JpaRepository<GtdSchedule, Long>, JpaSpecificationExecutor<GtdSchedule> {
 	List<GtdSchedule> getByItemHopeDoneDate(Integer itemHopeDoneDate);
 }

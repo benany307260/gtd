@@ -1,4 +1,12 @@
 
+function getStatusDesc(status){
+	var statusDesc = '';
+	// 任务状态。0-进行中；100-按时完成；200-过期未完成；300-过期已完成；400-草稿；
+	if(status == 0){
+		statusDesc = '';
+	}
+}
+
 // 今天待办
 function loadCurrHopeDoneList() {
 	
@@ -7,6 +15,7 @@ function loadCurrHopeDoneList() {
 	
     var condition = {
     		itemHopeDoneDate: currDate,
+    		itemStatus: 0
     		//pageNum: 1,
     		//pageSize: 20
 	};
@@ -24,6 +33,12 @@ function loadCurrHopeDoneList() {
 		var dataList = data.data;
 		for (var i = 0; i < dataList.length; i++) 
 		{
+			var hideClass = '';
+			// 已完成，不需要显示操作按钮
+			if(dataList[i].itemStatus == 100){
+				hideClass = 'layui-hide';
+			}
+			
 			var html = '<li>'
             + '<a href="user/home.html" class="fly-avatar">'
             + '<img src="https://tva1.sinaimg.cn/crop.0.0.118.118.180/5db11ff4gw1e77d3nqrv8j203b03cweg.jpg" alt="贤心">'
@@ -40,8 +55,8 @@ function loadCurrHopeDoneList() {
             + '</a>'
             + '<span>刚刚</span>'
             + '<span class="fly-list-kiss layui-hide-xs" title="悬赏飞吻"><i class="iconfont icon-kiss"></i> 60</span>'
-            + '<a href="javascript:void(0);" link>'
-            + '<span class="layui-badge fly-badge-accept layui-bg-gray layui-hide-xs">关闭</span>'
+            + '<a href="javascript:void(0);" onclick="finishItem('+dataList[i].id+')" link>'
+            + '<span class="layui-badge fly-badge-accept layui-bg-gray layui-hide-xs '+hideClass+' " >完成</span>'
             + '</a>'
             //+ '<button type="button" class="layui-btn layui-btn-xs">一个标准的按钮</button>'
             + '<span class="fly-list-nums"> '
@@ -120,4 +135,16 @@ function loadNotDoneList() {
 	var path = "v1/findItemList";
     loadData(path, true, conditionJson, successFunc);
 };
+
+function finishItem(id){
+	var condition = {
+    		id: id,
+    		itemStatus: 100
+	};
+	
+	var conditionJson = JSON.stringify(condition);
+    
+	var path = "v1/updateItemStatus";
+    loadData(path, true, conditionJson, null);
+}
 

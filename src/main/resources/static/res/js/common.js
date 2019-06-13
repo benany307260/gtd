@@ -4,6 +4,7 @@
    /* 加载数据*/
 	loadData = function(path, isAsync, data, successFunc) {
 		var url =("../") + path; 
+		
 		$.ajax({
 			url: url,
 			type: 'POST',
@@ -13,9 +14,16 @@
 			dataType: 'json',
 			data: data,
 			success: function(data){
-				//var resdata = data.data, rescode = data.meta.success , message = data.meta.message;
-				//alert(message+"----"+resdata);
-				successFunc(data);
+				if(successFunc == null){
+					if(data.code == 0) {
+			    		layer.msg('操作成功');
+			    	}
+					else {
+						layer.msg(data.msg);
+					}
+				}else{
+					successFunc(data);
+				}
 			},
 			error:function(data){
 				alert("error");

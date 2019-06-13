@@ -11,7 +11,7 @@ public class GtdScheduleVo implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	private Integer id;
+	private Long id;
 
 	private Date createTime;
 
@@ -61,11 +61,11 @@ public class GtdScheduleVo implements Serializable {
 		this.pageNum = pageNum;
 	}
 
-	public Integer getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(Integer id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 

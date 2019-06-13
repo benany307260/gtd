@@ -19,6 +19,9 @@ public class GtdProvider {
 		if(condition.getItemHopeDoneDate() != null){
 			sql.append("and ITEM_HOPE_DONE_DATE=#{itemHopeDoneDate} ");
 		}
+		if(condition.getItemStatus() != null){
+			sql.append("and ITEM_STATUS=#{itemStatus} ");
+		}
 		
 		return sql.toString();
 	}

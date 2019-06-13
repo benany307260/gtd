@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.bentest.gtd.entity.GtdSchedule;
+import com.bentest.gtd.result.CodeMsg;
 import com.bentest.gtd.result.Result;
 import com.bentest.gtd.service.IGtdService;
 import com.bentest.gtd.vo.GtdScheduleVo;
@@ -18,6 +19,9 @@ public class GtdController {
 	
 	@Autowired
 	private IGtdService gtdService;
+	
+	/*@Autowired
+	private GtdScheduleRespository gtdScheduleRespository;*/
 	
 	
 	@RequestMapping(value = "/v1/findItemList")
@@ -41,6 +45,17 @@ public class GtdController {
 			return Result.success(itemList);
 		}*/
 		
+	}
+	
+	@RequestMapping(value = "/v1/updateItemStatus")
+	public Result<Object> updateItemStatus(@RequestBody GtdScheduleVo condition) {
+		if(condition.getId() == null) {
+			return Result.error(CodeMsg.BIND_ERROR);
+		}
+		
+		gtdService.updateItemStatus(condition);
+		
+		return Result.success("");
 	}
 	
 }
