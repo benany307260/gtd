@@ -8,6 +8,6 @@ import com.bentest.gtd.vo.GtdScheduleVo;
 public interface IGtdService {
 	public List<GtdSchedule> findItemList(GtdScheduleVo condition);
 	
-	public Integer updateItemStatus(GtdScheduleVo condition);
+	public Integer updateItemById(GtdScheduleVo condition);
 	
 }

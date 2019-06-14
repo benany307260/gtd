@@ -1,5 +1,7 @@
 package com.bentest.gtd.mapper.provider;
 
+import org.apache.ibatis.jdbc.SQL;
+
 import com.bentest.gtd.vo.GtdScheduleVo;
 
 
@@ -24,6 +26,22 @@ public class GtdProvider {
 		}
 		
 		return sql.toString();
+	}
+	
+	public String updateItemByIdSql(final GtdScheduleVo condition){
+		
+		return new SQL() {{
+			UPDATE("gtd_schedule");
+            
+            if (condition.getItemStatus() != null) {
+               SET("ITEM_STATUS = #{itemStatus}");
+            }
+            if (condition.getItemRealDoneDate() != null) {
+                SET("ITEM_REAL_DONE_DATE = #{itemRealDoneDate}");
+            }
+            
+            WHERE("ID=#{id}");
+        }}.toString();
 	}
 	
 	

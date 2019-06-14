@@ -39,7 +39,7 @@ function loadCurrHopeDoneList() {
 				hideClass = 'layui-hide';
 			}
 			
-			var html = '<li>'
+			var html = '<li id="liId-'+dataList[i].id+'" data-itemhopedonedate="'+dataList[i].itemHopeDoneDate+'" >'
             + '<a href="user/home.html" class="fly-avatar">'
             + '<img src="https://tva1.sinaimg.cn/crop.0.0.118.118.180/5db11ff4gw1e77d3nqrv8j203b03cweg.jpg" alt="贤心">'
             + '</a>'
@@ -137,14 +137,41 @@ function loadNotDoneList() {
 };
 
 function finishItem(id){
-	var condition = {
-    		id: id,
-    		itemStatus: 100
-	};
 	
-	var conditionJson = JSON.stringify(condition);
-    
-	var path = "v1/updateItemStatus";
-    loadData(path, true, conditionJson, null);
+	layer.confirm('完成该事项？', {btn: ['确定','取消']}, function(index){
+		
+		var liId = "liId-" + id;
+		//console.log("liId="+liId);
+		
+		var itemHopeDoneDate = $("#"+liId).data("itemhopedonedate");
+		//console.log("itemHopeDoneDate="+itemHopeDoneDate);
+		
+		var currDate = new Date().Format("yyyyMMdd");
+		
+		var itemStatus;
+		// 期望完成时间就是当前时间，则状态是按时完成
+		if(itemHopeDoneDate == currDate){
+			itemStatus = 100;
+		}else{
+			// 过期已完成
+			itemStatus = 300;
+		}
+		
+		var condition = {
+	    		id: id,
+	    		itemStatus: itemStatus,
+	    		itemRealDoneDate: currDate
+		};
+		
+		var conditionJson = JSON.stringify(condition);
+	    
+		var path = "v1/updateItem";
+	    loadData(path, false, conditionJson, null);
+	  
+	    loadCurrHopeDoneList();
+	    
+	    layer.close(index);
+	});
+	
 }
 

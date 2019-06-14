@@ -36,6 +36,9 @@ public class GtdController {
 		}
 		
 		List<GtdSchedule> itemList = gtdService.findItemList(condition);
+		
+		System.out.println(itemList.size());
+		
 		return Result.success(itemList);
 		/*if(CollectionUtils.isEmpty(itemList)) {
 			itemList = new ArrayList<GtdSchedule>();
@@ -47,14 +50,14 @@ public class GtdController {
 		
 	}
 	
-	@RequestMapping(value = "/v1/updateItemStatus")
-	public Result<Object> updateItemStatus(@RequestBody GtdScheduleVo condition) {
+	@RequestMapping(value = "/v1/updateItem")
+	public Result<Object> updateItem(@RequestBody GtdScheduleVo condition) {
 		if(condition.getId() == null) {
 			return Result.error(CodeMsg.BIND_ERROR);
 		}
 		
-		gtdService.updateItemStatus(condition);
-		
+		gtdService.updateItemById(condition);
+		System.out.println("更新成功");
 		return Result.success("");
 	}
 	

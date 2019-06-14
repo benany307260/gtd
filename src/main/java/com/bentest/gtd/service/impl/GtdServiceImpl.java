@@ -23,8 +23,8 @@ public class GtdServiceImpl implements IGtdService {
 	}
 
 	@Override
-	public Integer updateItemStatus(GtdScheduleVo condition) {
-		return gtdMapper.updateItemStatus(condition);
+	public Integer updateItemById(GtdScheduleVo condition) {
+		return gtdMapper.updateItemById(condition);
 	}
 
 }

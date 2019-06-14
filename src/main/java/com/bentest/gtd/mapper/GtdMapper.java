@@ -6,7 +6,6 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Result;
 import org.apache.ibatis.annotations.Results;
 import org.apache.ibatis.annotations.SelectProvider;
-import org.apache.ibatis.annotations.Update;
 
 import com.bentest.gtd.entity.GtdSchedule;
 import com.bentest.gtd.mapper.provider.GtdProvider;
@@ -35,6 +34,9 @@ public interface GtdMapper {
 			})
 	public List<GtdSchedule> findGtdItemList(GtdScheduleVo condition);
 	
-	@Update("update gtd_schedule set item_status = #{itemStatus} where id = #{id} ")
-	public Integer updateItemStatus(GtdScheduleVo condition);
+	@SelectProvider(type = GtdProvider.class, method = "updateItemByIdSql")
+	public Integer updateItemById(GtdScheduleVo condition);
+	
+	/*@Update("update gtd_schedule set item_status = #{itemStatus} where id = #{id} ")
+	public Integer updateItemStatus(GtdScheduleVo condition);*/
 }
