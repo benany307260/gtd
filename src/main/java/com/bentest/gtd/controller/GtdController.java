@@ -37,8 +37,6 @@ public class GtdController {
 		
 		List<GtdSchedule> itemList = gtdService.findItemList(condition);
 		
-		System.out.println(itemList.size());
-		
 		return Result.success(itemList);
 		/*if(CollectionUtils.isEmpty(itemList)) {
 			itemList = new ArrayList<GtdSchedule>();

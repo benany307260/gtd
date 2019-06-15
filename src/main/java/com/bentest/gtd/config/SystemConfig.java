@@ -10,7 +10,7 @@ public class SystemConfig {
 	/**
 	 * 扫描指令Cron表达式，默认每5s一次
 	 */
-	private String scanCmdCron = "0/5 * * * * ?";
+	private String handleItemTimeoutCron = "0/5 * * * * ?";
 	
 	/**
 	 * 服务端节点编号，最大两位
@@ -22,22 +22,13 @@ public class SystemConfig {
 	 */
 	private int areaNode;
 	
-	private String amzUrl;
 
-	public String getAmzUrl() {
-		return amzUrl;
+	public String getHandleItemTimeoutCron() {
+		return handleItemTimeoutCron;
 	}
 
-	public void setAmzUrl(String amzUrl) {
-		this.amzUrl = amzUrl;
-	}
-
-	public String getScanCmdCron() {
-		return scanCmdCron;
-	}
-
-	public void setScanCmdCron(String scanCmdCron) {
-		this.scanCmdCron = scanCmdCron;
+	public void setHandleItemTimeoutCron(String handleItemTimeoutCron) {
+		this.handleItemTimeoutCron = handleItemTimeoutCron;
 	}
 
 	public int getServerNode() {

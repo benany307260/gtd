@@ -27,4 +27,9 @@ public class GtdServiceImpl implements IGtdService {
 		return gtdMapper.updateItemById(condition);
 	}
 
+	@Override
+	public Integer updateItemTimeout(GtdScheduleVo condition) {
+		return gtdMapper.updateItemTimeout(condition);
+	}
+
 }

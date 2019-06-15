@@ -41,8 +41,22 @@ public class GtdScheduleVo implements Serializable {
 	private Integer pageSize;
 	
 	private Integer pageNum;
+	
+	
+	/**
+	 * 排序字段，1为正序；-1为倒序
+	 */
+	private Integer itemHopeDoneDateSort;
 
 	public GtdScheduleVo() {
+	}
+
+	public Integer getItemHopeDoneDateSort() {
+		return itemHopeDoneDateSort;
+	}
+
+	public void setItemHopeDoneDateSort(Integer itemHopeDoneDateSort) {
+		this.itemHopeDoneDateSort = itemHopeDoneDateSort;
 	}
 
 	public Integer getPageSize() {

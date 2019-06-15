@@ -10,4 +10,5 @@ public interface IGtdService {
 	
 	public Integer updateItemById(GtdScheduleVo condition);
 	
+	public Integer updateItemTimeout(GtdScheduleVo condition);
 }

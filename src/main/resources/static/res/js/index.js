@@ -85,6 +85,7 @@ function loadNotDoneList() {
     var condition = {
     		//itemHopeDoneDate: currDate,
     		itemStatus: 200,
+    		itemHopeDoneDateSort: -1,
     		pageNum: 1,
     		pageSize: 10
 	};
@@ -102,7 +103,13 @@ function loadNotDoneList() {
 		var dataList = data.data;
 		for (var i = 0; i < dataList.length; i++) 
 		{
-			var html = '<li>'
+			var hideClass = '';
+			// 已完成，不需要显示操作按钮
+			if(dataList[i].itemStatus == 100){
+				hideClass = 'layui-hide';
+			}
+			
+			var html = '<li id="liId-'+dataList[i].id+'" data-itemhopedonedate="'+dataList[i].itemHopeDoneDate+'" >'
             + '<a href="user/home.html" class="fly-avatar">'
             + '<img src="https://tva1.sinaimg.cn/crop.0.0.118.118.180/5db11ff4gw1e77d3nqrv8j203b03cweg.jpg" alt="贤心">'
             + '</a>'
@@ -118,7 +125,10 @@ function loadNotDoneList() {
             + '</a>'
             + '<span>刚刚</span>'
             + '<span class="fly-list-kiss layui-hide-xs" title="悬赏飞吻"><i class="iconfont icon-kiss"></i> 60</span>'
-            + '<span class="layui-badge fly-badge-accept layui-hide-xs">未完成</span>'
+            + '<a href="javascript:void(0);" onclick="finishItem('+dataList[i].id+')" link>'
+            + '<span class="layui-badge fly-badge-accept layui-bg-gray layui-hide-xs '+hideClass+' " >完成</span>'
+            + '</a>'
+            //+ '<button type="button" class="layui-btn layui-btn-xs">一个标准的按钮</button>'
             + '<span class="fly-list-nums"> '
             + '<i class="iconfont icon-pinglun1" title="回答"></i> 66'
             + '</span>'

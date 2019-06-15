@@ -18,7 +18,7 @@ import com.bentest.gtd.config.SystemConfig;
  */
 @Configuration
 @EnableScheduling
-public class HandleCmdService implements SchedulingConfigurer {
+public class HandleItemTimeoutService implements SchedulingConfigurer {
  
     //private static Logger log = LoggerFactory.getLogger(PushTmplService.class);
     
@@ -26,7 +26,7 @@ public class HandleCmdService implements SchedulingConfigurer {
     private SystemConfig systemConfig;
     
     @Autowired
-    private DealCmdTask dealCmdTask;
+    private DealItemTimeoutTask dealTask;
     
     
     @Override
@@ -35,12 +35,12 @@ public class HandleCmdService implements SchedulingConfigurer {
             @Override
             public void run() {
                 // 任务逻辑
-            	dealCmdTask.run();
+            	dealTask.run();
             }
         }, new Trigger() {
             @Override
             public Date nextExecutionTime(TriggerContext triggerContext) {
-                String s = systemConfig.getScanCmdCron();
+                String s = systemConfig.getHandleItemTimeoutCron();
                 // 任务触发，可修改任务的执行周期
                 CronTrigger trigger = new CronTrigger(s);
                 Date nextExec = trigger.nextExecutionTime(triggerContext);
