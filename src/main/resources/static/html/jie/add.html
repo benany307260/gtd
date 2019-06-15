@@ -86,13 +86,24 @@
                 <div class="layui-col-md12">
                   <label for="L_title" class="layui-form-label">事项内容</label>
                   <div class="layui-input-block">
-                    <input type="text" id="L_title" name="itemContent" required lay-verify="required" autocomplete="off" class="layui-input">
+                    <input type="text" id="L_title" name="itemContent" required lay-verify="required" autocomplete="off" class="layui-input" lay-filter="itemContent">
                     <!-- <input type="hidden" name="id" value="{{d.edit.id}}"> -->
                   </div>
                 </div>
               </div>
 
               <div class="layui-row layui-col-space15 layui-form-item">
+              
+              <div class="layui-col-md3">
+                  <label class="layui-form-label">事项安排</label>
+                  <div class="layui-input-block">
+                    <select lay-verify="required" name="itemPlan" lay-filter="itemPlan"> 
+                      <option value="0">计划</option> 
+                      <option value="400">草稿</option> 
+                    </select>
+                  </div>
+                </div>
+              
               	<div class="layui-col-md3">
                   <label for="L_title" class="layui-form-label">完成日期</label>
                   <div class="layui-input-block">
@@ -100,10 +111,11 @@
                     <!-- <input type="hidden" name="id" value="{{d.edit.id}}"> -->
                   </div>
                 </div>
+                
                 <div class="layui-col-md3">
                   <label class="layui-form-label">事项类型</label>
                   <div class="layui-input-block">
-                    <select lay-verify="required" name="itemType" lay-filter="column"> 
+                    <select lay-verify="required" name="itemClass" lay-filter="column" lay-search> 
                       <option></option> 
                       <option value="100">工作</option> 
                       <option value="150">学习</option> 
@@ -149,7 +161,9 @@
   </p>
 </div>
 
+<script src="../../res/commonjs/jquery3.1.1.min.js"></script>
 <script src="../../res/layui/layui.js"></script>
+<script src="../../res/js/common.js"></script>
 <script>
 layui.cache.page = 'jie';
 layui.cache.user = {
@@ -172,6 +186,7 @@ layui.use('laydate', function(){
   //执行一个laydate实例
   laydate.render({
     elem: '#txtItemHopeDoneDate', //指定元素
+    format: 'yyyyMMdd',
     value: new Date(),
     calendar: true
   });
@@ -191,14 +206,43 @@ layui.use('form', function(){
 	
 	
 	form.on('submit(*)', function(data){
-	    layer.alert(JSON.stringify(data.field), {
+		
+		var itemPlan = data.field.itemPlan;
+		
+		var itemContent = data.field.itemContent;
+		var itemHopeDoneDate = data.field.itemHopeDoneDate;
+		var itemClass = data.field.itemClass;
+		var itemStatus = 0;
+		
+		// 草稿
+		if(itemPlan == 400){
+			// 清除当前时间
+			itemHopeDoneDate = null;
+			itemStatus = 400;
+		}
+		
+		var condition = {
+				itemContent: itemContent,
+				itemHopeDoneDate: itemHopeDoneDate,
+				itemClass: itemClass,
+				itemStatus: itemStatus
+		};
+	    
+	    var conditionJson = JSON.stringify(condition);
+	    
+	    var path = "../v1/addItem";
+	    loadData(path, false, conditionJson, null);
+	    $("[name='itemContent']").val('');
+	    
+	    //data.form.render(null, 'itemContent');
+	    //data.form.render(); //更新全部
+	    /* layer.alert(JSON.stringify(data.field), {
 	      title: '最终的提交信息'
-	    })
+	    }) */
 	    return false;
 	  });
 	
-  //各种基于事件的操作，下面会有进一步介绍
-});
+	});
 
 
 </script>

@@ -24,6 +24,7 @@ public interface GtdMapper {
 		@Result(property = "itemHopeDoneDate", column = "ITEM_HOPE_DONE_DATE"),
 		@Result(property = "itemContent", column = "ITEM_CONTENT"),
 		@Result(property = "itemType", column = "ITEM_TYPE"),
+		@Result(property = "itemClass", column = "ITEM_CLASS"),
 		@Result(property = "itemFontColor", column = "ITEM_FONT_COLOR"),
 		@Result(property = "itemIcon", column = "ITEM_ICON"),
 		@Result(property = "itemLink", column = "ITEM_LINK"),

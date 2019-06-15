@@ -48,6 +48,9 @@ public class GtdSchedule implements Serializable {
 
 	@Column(name="ITEM_TYPE")
 	private String itemType;
+	
+	@Column(name="ITEM_CLASS")
+	private Integer itemClass;
 
 	@JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
 	@Temporal(TemporalType.TIMESTAMP)
@@ -55,6 +58,14 @@ public class GtdSchedule implements Serializable {
 	private Date updateTime;
 
 	public GtdSchedule() {
+	}
+
+	public Integer getItemClass() {
+		return itemClass;
+	}
+
+	public void setItemClass(Integer itemClass) {
+		this.itemClass = itemClass;
 	}
 
 	public Long getId() {
