@@ -197,6 +197,9 @@ function loadNotDoneList() {
             + '<a href="javascript:void(0);" onclick="finishItem('+dataList[i].id+')" link>'
             + '<span class="layui-badge fly-badge-accept layui-bg-gray layui-hide-xs '+hideClass+' " >完成</span>'
             + '</a>'
+            + '<a href="javascript:void(0);" onclick="notFinishItem('+dataList[i].id+')" link>'
+            + '<span class="layui-badge fly-badge-accept layui-bg-gray layui-hide-xs '+hideClass+' " >无需再做</span>'
+            + '</a>'
             //+ '<button type="button" class="layui-btn layui-btn-xs">一个标准的按钮</button>'
             + '<span class="fly-list-nums"> '
             + '<i class="iconfont icon-pinglun1" title="回答"></i> 66'
@@ -249,6 +252,34 @@ function finishItem(id){
 	  
 	    loadCurrHopeDoneList();
 	    loadCurrDoneList();
+	    loadNotDoneList();
+	    
+	    layer.close(index);
+	});
+	
+}
+
+// 更新事项为不用完成
+function notFinishItem(id){
+	
+	layer.confirm('完成该事项？', {btn: ['确定','取消']}, function(index){
+		
+		var liId = "liId-" + id;
+		
+		var itemStatus = 500;
+		
+		var condition = {
+	    		id: id,
+	    		itemStatus: itemStatus
+		};
+		
+		var conditionJson = JSON.stringify(condition);
+	    
+		var path = "v1/updateItem";
+	    loadData(path, false, conditionJson, null);
+	  
+	    //loadCurrHopeDoneList();
+	    //loadCurrDoneList();
 	    loadNotDoneList();
 	    
 	    layer.close(index);
