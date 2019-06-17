@@ -346,7 +346,6 @@ function loadItemNotPlan() {
     		pageSize: 20
 	};
     
-    
     var conditionJson = JSON.stringify(condition);
     
     var successFunc = function(data) {
