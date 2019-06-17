@@ -53,7 +53,7 @@ function loadCurrHopeDoneList() {
             + '<i class="iconfont icon-renzheng" title="认证信息：XXX"></i>'
             + '<i class="layui-badge fly-badge-vip">VIP3</i>'
             + '</a>'
-            + '<span>刚刚</span>'
+            + '<span>'+dataList[i].itemHopeDoneDate+'</span>'
             + '<span class="fly-list-kiss layui-hide-xs" title="悬赏飞吻"><i class="iconfont icon-kiss"></i> 60</span>'
             + '<a href="javascript:void(0);" onclick="finishItem(\''+dataList[i].id+'\')" link>'
             + '<span class="layui-badge fly-badge-accept layui-bg-gray layui-hide-xs '+hideClass+' " >完成</span>'
@@ -122,7 +122,7 @@ function loadCurrDoneList() {
             + '<i class="iconfont icon-renzheng" title="认证信息：XXX"></i>'
             + '<i class="layui-badge fly-badge-vip">VIP3</i>'
             + '</a>'
-            + '<span>刚刚</span>'
+            + '<span>'+dataList[i].itemHopeDoneDate+'</span>'
             + '<span class="fly-list-kiss layui-hide-xs" title="悬赏飞吻"><i class="iconfont icon-kiss"></i> 60</span>'
             + '<a href="javascript:void(0);" onclick="finishItem(\''+dataList[i].id+'\')" link>'
             + '<span class="layui-badge fly-badge-accept layui-bg-gray layui-hide-xs '+hideClass+' " >完成</span>'
@@ -145,15 +145,61 @@ function loadCurrDoneList() {
     loadData(path, true, conditionJson, successFunc);
 };
 
-// 加载未完成
+
+var selectClass = "layui-this";
+
+function itemListChangeSelectClass(id){
+	
+	itemListRemoveSelectClass("aNotDoneList");
+	itemListRemoveSelectClass("aDoneList");
+	itemListRemoveSelectClass("aAllList");
+	
+	var aItemList = $("#"+id);
+	// 不是自身选中
+	if(!aItemList.hasClass(selectClass)){
+		aItemList.addClass(selectClass);
+	}
+	
+}
+
+function itemListRemoveSelectClass(id){
+	var aItemList = $("#"+id);
+	
+	// 不是自身选中
+	if(aItemList.hasClass(selectClass)){
+		aItemList.removeClass(selectClass);
+	}
+	
+} 
+
+//加载未完成
 function loadNotDoneList() {
+	
+	itemListChangeSelectClass("aNotDoneList");
+	loadItemList(200);
+}
+
+//加载已完成
+function loadDoneList() {
+	itemListChangeSelectClass("aDoneList");
+	loadItemList(100);
+}
+
+//加载全部
+function loadAllList() {
+	itemListChangeSelectClass("aAllList");
+	loadItemList(null);
+}
+
+// 加载事项
+function loadItemList(itemStatus) {
 	
 	//var currtime = new Date().Format("yyyyMMddHHmmss");
 	//var currDate = new Date().Format("yyyyMMdd");
 	
     var condition = {
     		//itemHopeDoneDate: currDate,
-    		itemStatus: 200,
+    		itemStatus: itemStatus,
     		itemHopeDoneDateSort: -1,
     		pageNum: 1,
     		pageSize: 10
@@ -192,7 +238,7 @@ function loadNotDoneList() {
             + '<i class="iconfont icon-renzheng" title="认证信息：XXX"></i>'
             + '<i class="layui-badge fly-badge-vip">VIP3</i>'
             + '</a>'
-            + '<span>刚刚</span>'
+            + '<span>'+dataList[i].itemHopeDoneDate+'</span>'
             + '<span class="fly-list-kiss layui-hide-xs" title="悬赏飞吻"><i class="iconfont icon-kiss"></i> 60</span>'
             + '<a href="javascript:void(0);" onclick="finishItem(\''+dataList[i].id+'\')" link>'
             + '<span class="layui-badge fly-badge-accept layui-bg-gray layui-hide-xs '+hideClass+' " >完成</span>'
