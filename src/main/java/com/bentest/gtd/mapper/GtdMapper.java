@@ -8,7 +8,6 @@ import org.apache.ibatis.annotations.Results;
 import org.apache.ibatis.annotations.SelectProvider;
 import org.apache.ibatis.annotations.Update;
 
-import com.bentest.gtd.entity.GtdSchedule;
 import com.bentest.gtd.mapper.provider.GtdProvider;
 import com.bentest.gtd.vo.GtdScheduleVo;
 
@@ -34,7 +33,7 @@ public interface GtdMapper {
 		@Result(property = "createTime", column = "CREATE_TIME"),
 		@Result(property = "updateTime", column = "UPDATE_TIME")
 			})
-	public List<GtdSchedule> findGtdItemList(GtdScheduleVo condition);
+	public List<GtdScheduleVo> findGtdItemList(GtdScheduleVo condition);
 	
 	@SelectProvider(type = GtdProvider.class, method = "updateItemByIdSql")
 	public Integer updateItemById(GtdScheduleVo condition);

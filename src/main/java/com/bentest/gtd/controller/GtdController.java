@@ -42,7 +42,7 @@ public class GtdController {
 			PageHelper.startPage(condition.getPageNum() , condition.getPageSize());
 		}
 		
-		List<GtdSchedule> itemList = gtdService.findItemList(condition);
+		List<GtdScheduleVo> itemList = gtdService.findItemList(condition);
 		
 		return Result.success(itemList);
 		/*if(CollectionUtils.isEmpty(itemList)) {

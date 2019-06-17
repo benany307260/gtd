@@ -11,7 +11,7 @@ public class GtdScheduleVo implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	private Long id;
+	private String id;
 
 	private Date createTime;
 
@@ -42,13 +42,25 @@ public class GtdScheduleVo implements Serializable {
 	
 	private Integer pageNum;
 	
+	private Integer itemClass;
+	
 	
 	/**
 	 * 排序字段，1为正序；-1为倒序
 	 */
 	private Integer itemHopeDoneDateSort;
+	
+	
 
 	public GtdScheduleVo() {
+	}
+
+	public Integer getItemClass() {
+		return itemClass;
+	}
+
+	public void setItemClass(Integer itemClass) {
+		this.itemClass = itemClass;
 	}
 
 	public Integer getItemHopeDoneDateSort() {
@@ -75,11 +87,11 @@ public class GtdScheduleVo implements Serializable {
 		this.pageNum = pageNum;
 	}
 
-	public Long getId() {
+	public String getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 
