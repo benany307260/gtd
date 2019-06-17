@@ -22,13 +22,22 @@ public class GtdProvider {
 				WHERE("ITEM_STATUS=#{itemStatus} ");
 			}
 			
-			// 正序排序
+			// 期望完成日期正序排序
 			if(condition.getItemHopeDoneDateSort() != null && condition.getItemHopeDoneDateSort() > 0) {
 				ORDER_BY("ITEM_HOPE_DONE_DATE ASC");
 			}
-			// 倒序排序
+			// 期望完成日期倒序排序
 			else if(condition.getItemHopeDoneDateSort() != null && condition.getItemHopeDoneDateSort() < 0) {
 				ORDER_BY("ITEM_HOPE_DONE_DATE DESC");
+			}
+			
+			// 创建时间正序排序
+			if(condition.getCreateTimeSort() != null && condition.getCreateTimeSort() > 0) {
+				ORDER_BY("CREATE_TIME ASC");
+			}
+			// 创建时间倒序排序
+			else if(condition.getCreateTimeSort() != null && condition.getCreateTimeSort() < 0) {
+				ORDER_BY("CREATE_TIME DESC");
 			}
             
         }}.toString();

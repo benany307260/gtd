@@ -48,11 +48,23 @@ public class GtdScheduleVo implements Serializable {
 	/**
 	 * 排序字段，1为正序；-1为倒序
 	 */
+	
 	private Integer itemHopeDoneDateSort;
+	
+	
+	private Integer createTimeSort;
 	
 	
 
 	public GtdScheduleVo() {
+	}
+
+	public Integer getCreateTimeSort() {
+		return createTimeSort;
+	}
+
+	public void setCreateTimeSort(Integer createTimeSort) {
+		this.createTimeSort = createTimeSort;
 	}
 
 	public Integer getItemClass() {

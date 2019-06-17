@@ -330,6 +330,53 @@ function notFinishItem(id){
 	    
 	    layer.close(index);
 	});
-	
 }
+
+
+function loadItemNotPlan() {
+	
+	//var currtime = new Date().Format("yyyyMMddHHmmss");
+	//var currDate = new Date().Format("yyyyMMdd");
+	
+    var condition = {
+    		//itemHopeDoneDate: currDate,
+    		itemStatus: 400,
+    		createTimeSort: -1,
+    		pageNum: 1,
+    		pageSize: 20
+	};
+    
+    var conditionJson = JSON.stringify(condition);
+    
+    var successFunc = function(data) {
+    	if(data.code != 0)
+    	{
+    		return;
+    	}
+		
+    	var ul = $("#ulItemNotPlan");
+    	ul.empty();
+		var dataList = data.data;
+		for (var i = 0; i < dataList.length; i++) 
+		{
+			var hideClass = '';
+			// 已完成，不需要显示操作按钮
+			if(dataList[i].itemStatus == 100){
+				hideClass = 'layui-hide';
+			}
+			
+			var html = ""
+				+ '<li>'
+				+ '<a href="javascript:void(0);" target="_blank">'+dataList[i].itemContent+'</a>'
+				+ '</li>'
+				;
+				
+			ul.append(html);
+		}
+		
+	};
+    
+	var path = "v1/findItemList";
+    loadData(path, true, conditionJson, successFunc);
+};
 
