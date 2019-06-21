@@ -16,9 +16,9 @@ import org.slf4j.LoggerFactory;
 import org.springframework.boot.system.ApplicationHome;
 import org.springframework.core.io.ClassPathResource;
 
-import com.bentest.spiders.constant.PropEncConstant;
-import com.bentest.spiders.util.AESUtil;
-import com.bentest.spiders.util.SafeProperties;
+import com.bentest.gtd.constant.PropEncConstant;
+import com.bentest.gtd.util.AESUtil;
+import com.bentest.gtd.util.SafeProperties;
 
 import cn.hutool.core.util.HexUtil;
 
