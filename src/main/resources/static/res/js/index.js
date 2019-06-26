@@ -57,7 +57,7 @@ function loadCurrHopeDoneList() {
             //+ '<i class="layui-badge fly-badge-vip">VIP3</i>'
             //+ '</a>'
             + '<span>'+dataList[i].itemHopeDoneDate+'</span>'
-            + '<span class="fly-list-kiss layui-hide-xs" title="悬赏飞吻"><i class="iconfont icon-kiss"></i> 60</span>'
+            //+ '<span class="fly-list-kiss layui-hide-xs" title="悬赏飞吻"><i class="iconfont icon-kiss"></i> 60</span>'
             + '<a href="javascript:void(0);" onclick="finishItem(\''+dataList[i].id+'\')" class=" '+hideClass+' " link >'
             //+ '<span class="layui-badge fly-badge-accept layui-bg-gray layui-hide-xs '+hideClass+' " >完成</span>'
             + '完成'
@@ -120,9 +120,12 @@ function loadCurrDoneList() {
 				hideClass = 'layui-hide';
 			}
 			
+			var itemiconName = getItemiconName(dataList[i].itemClass);
+			var itemiconUrl = '/res/images/itemicon/'+itemiconName;
+			
 			var html = '<li id="liId-'+dataList[i].id+'" data-itemhopedonedate="'+dataList[i].itemHopeDoneDate+'" >'
             + '<a href="user/home.html" class="fly-avatar">'
-            + '<img src="https://tva1.sinaimg.cn/crop.0.0.118.118.180/5db11ff4gw1e77d3nqrv8j203b03cweg.jpg" alt="贤心">'
+            + '<img src="'+itemiconUrl+'" alt="">'
             + '</a>'
             + '<h2>'
             //+ '<a class="layui-badge">动态</a>'
@@ -135,7 +138,7 @@ function loadCurrDoneList() {
             //+ '<i class="layui-badge fly-badge-vip">VIP3</i>'
             //+ '</a>'
             + '<span>'+dataList[i].itemHopeDoneDate+'</span>'
-            + '<span class="fly-list-kiss layui-hide-xs" title="悬赏飞吻"><i class="iconfont icon-kiss"></i> 60</span>'
+            //+ '<span class="fly-list-kiss layui-hide-xs" title="悬赏飞吻"><i class="iconfont icon-kiss"></i> 60</span>'
             + '<a href="javascript:void(0);" onclick="finishItem(\''+dataList[i].id+'\')" class=" '+hideClass+'" link>'
             //+ '<span class="layui-badge fly-badge-accept layui-bg-gray layui-hide-xs '+hideClass+' " >完成</span>'
             + '完成'
@@ -237,9 +240,12 @@ function loadItemList(itemStatus) {
 				hideClass = 'layui-hide';
 			}
 			
+			var itemiconName = getItemiconName(dataList[i].itemClass);
+			var itemiconUrl = '/res/images/itemicon/'+itemiconName;
+			
 			var html = '<li id="liId-'+dataList[i].id+'" data-itemhopedonedate="'+dataList[i].itemHopeDoneDate+'" >'
             + '<a href="user/home.html" class="fly-avatar">'
-            + '<img src="https://tva1.sinaimg.cn/crop.0.0.118.118.180/5db11ff4gw1e77d3nqrv8j203b03cweg.jpg" alt="贤心">'
+            + '<img src="'+itemiconUrl+'" alt="">'
             + '</a>'
             + '<h2>'
             //+ '<a class="layui-badge">动态</a>'
@@ -252,7 +258,7 @@ function loadItemList(itemStatus) {
             //+ '<i class="layui-badge fly-badge-vip">VIP3</i>'
             //+ '</a>'
             + '<span>'+dataList[i].itemHopeDoneDate+'</span>'
-            + '<span class="fly-list-kiss layui-hide-xs" title="悬赏飞吻"><i class="iconfont icon-kiss"></i> 60</span>'
+            //+ '<span class="fly-list-kiss layui-hide-xs" title="悬赏飞吻"><i class="iconfont icon-kiss"></i> 60</span>'
             + '<a href="javascript:void(0);" onclick="finishItem(\''+dataList[i].id+'\')" class=" '+hideClass+'" link>'
             //+ '<span class="layui-badge fly-badge-accept layui-bg-gray layui-hide-xs '+hideClass+' " >完成</span>'
             + '完成'
