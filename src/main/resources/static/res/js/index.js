@@ -58,6 +58,9 @@ function loadCurrHopeDoneList() {
             //+ '</a>'
             + '<span>'+dataList[i].itemHopeDoneDate+'</span>'
             //+ '<span class="fly-list-kiss layui-hide-xs" title="悬赏飞吻"><i class="iconfont icon-kiss"></i> 60</span>'
+            + '<a href="javascript:void(0);" onclick="gotoEdit(\''+dataList[i].id+'\')" link >'
+            + '修改'
+            + '</a>'
             + '<a href="javascript:void(0);" onclick="finishItem(\''+dataList[i].id+'\')" class=" '+hideClass+' " link >'
             //+ '<span class="layui-badge fly-badge-accept layui-bg-gray layui-hide-xs '+hideClass+' " >完成</span>'
             + '完成'
@@ -400,4 +403,8 @@ function loadItemNotPlan() {
 	var path = "v1/findItemList";
     loadData(path, true, conditionJson, successFunc);
 };
+
+function gotoEdit(id){
+	location.href = 'jie/add.html?id='+id;
+}
 

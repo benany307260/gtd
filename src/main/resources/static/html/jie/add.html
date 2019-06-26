@@ -74,10 +74,10 @@
   <div class="fly-panel" pad20 style="padding-top: 5px;">
     <!--<div class="fly-none">没有权限</div>-->
     <div class="layui-form layui-form-pane">
-      <div class="layui-tab layui-tab-brief" lay-filter="user">
+      <div class="layui-tab layui-tab-brief" lay-filter="item">
         <ul class="layui-tab-title">
-          <li class="layui-this">新建事项</li>
-          <li >编辑事项</li>
+          <li lay-id="tabAdd" class="layui-this">新建事项</li>
+          <li lay-id="tabEdit" >编辑事项</li>
         </ul>
         <div class="layui-form layui-tab-content" id="LAY_ucm" style="padding: 20px 0;">
           <div class="layui-tab-item layui-show">
@@ -148,6 +148,7 @@
               </div>
             </form>
           </div>
+          <div class="layui-tab-item">内容2</div>
         </div>
       </div>
     </div>
@@ -179,6 +180,27 @@ layui.config({
   version: "3.0.0"
   ,base: '../../res/mods/'
 });
+</script>
+
+<script>
+layui.use('element', function(){
+	var element = layui.element;
+	
+	var id=UrlParam.param("id");
+    if(id != undefined){
+    	element.tabChange('item', 'tabEdit');
+    }
+	
+	//一些事件监听
+	element.on('tab(item)', function(data){
+		console.log(data);
+	});
+});
+</script>
+
+<script type="text/javascript">
+    var id=UrlParam.param("id");
+    //alert(id);
 </script>
 
 <script>
