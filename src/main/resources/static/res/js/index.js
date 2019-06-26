@@ -39,9 +39,12 @@ function loadCurrHopeDoneList() {
 				hideClass = 'layui-hide';
 			}
 			
+			var itemiconName = getItemiconName(dataList[i].itemClass);
+			var itemiconUrl = '/res/images/itemicon/'+itemiconName;
+			
 			var html = '<li id="liId-'+dataList[i].id+'" data-itemhopedonedate="'+dataList[i].itemHopeDoneDate+'" >'
-            + '<a href="user/home.html" class="fly-avatar">'
-            + '<img src="https://tva1.sinaimg.cn/crop.0.0.118.118.180/5db11ff4gw1e77d3nqrv8j203b03cweg.jpg" alt="贤心">'
+            + '<a href="javascript:void(0);" class="fly-avatar">'
+            + '<img src="'+itemiconUrl+'" alt="">'
             + '</a>'
             + '<h2>'
             //+ '<a class="layui-badge">动态</a>'
@@ -76,6 +79,14 @@ function loadCurrHopeDoneList() {
 	var path = "v1/findItemList";
     loadData(path, true, conditionJson, successFunc);
 };
+
+function getItemiconName(itemClass){
+	var itemiconName = 'itemicon-default.png';
+	if(itemClass != null){
+		itemiconName = 'itemicon-'+itemClass+'.png';
+	}
+	return itemiconName;
+}
 
 //今天已办
 function loadCurrDoneList() {
